@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans transition-colors duration-200;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+  
+  html, body, #root {
+    @apply h-full;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-comviva-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-dark-surface rounded-xl shadow-sm border border-gray-200 dark:border-dark-border;
+  }
+  
+  .input-primary {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-comviva-primary focus:border-transparent;
+  }
+  
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(156 163 175) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107 114 128);
+  }
+}
+
+/* Custom animations */
+.typing-indicator {
+  @apply flex space-x-1;
+}
+
+.typing-dot {
+  @apply w-2 h-2 bg-gray-400 rounded-full animate-pulse;
+  animation-delay: var(--delay, 0ms);
+}
+
+.typing-dot:nth-child(2) {
+  --delay: 150ms;
+}
+
+.typing-dot:nth-child(3) {
+  --delay: 300ms;
+}
+
+/* Message bubble styles */
+.message-bubble {
+  @apply max-w-4xl mx-auto;
+}
+
+.user-message {
+  @apply bg-comviva-primary text-white rounded-2xl rounded-tr-md px-4 py-3 ml-auto;
+}
+
+.bot-message {
+  @apply bg-white border border-gray-200 rounded-2xl rounded-tl-md px-4 py-3 mr-auto;
+}
+
+/* Enhanced markdown content styling */
+.markdown-content {
+  @apply text-gray-800 dark:text-gray-200 leading-relaxed;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.markdown-content h1 { @apply text-lg mb-2 mt-3; }
+.markdown-content h2 { @apply text-base mb-2 mt-3; }
+.markdown-content h3 { @apply text-sm mb-1 mt-2; }
+
+.markdown-content p {
+  @apply mb-2 leading-relaxed;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-2 ml-4 space-y-1;
+}
+
+.markdown-content li {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.markdown-content strong {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.markdown-content em {
+  @apply italic text-gray-700 dark:text-gray-300;
+}
+
+.markdown-content code {
+  @apply bg-gray-100 dark:bg-gray-700 text-comviva-primary dark:text-blue-400 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-content pre {
+  @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-3 mb-3 overflow-x-auto;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent text-gray-800 dark:text-gray-200 p-0;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-comviva-primary pl-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-r-lg mb-2 italic;
+}
+
+/* Emoji and visual enhancements */
+.markdown-content {
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* Better spacing for lists with emojis */
+.markdown-content ul li::marker {
+  @apply text-comviva-primary;
+}
+
+.markdown-content ol li::marker {
+  @apply text-comviva-primary font-semibold;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Compact conversation styles */
+.conversation-item {
+  @apply transition-all duration-200 hover:shadow-sm;
+}
+
+.conversation-item:hover .conversation-actions {
+  @apply opacity-100;
+}
+
+.conversation-actions {
+  @apply opacity-0 transition-opacity duration-200;
+}
+
+/* Settings dropdown positioning */
+.settings-dropdown {
+  @apply absolute bottom-full left-0 mb-2;
+}
